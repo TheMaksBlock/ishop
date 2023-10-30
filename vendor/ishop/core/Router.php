@@ -56,7 +56,7 @@ class Router
                         $route[$k] = $v;
                 }
 
-                if(isset($route['action']))
+                if(!isset($route['action']))
                     $route['action'] = 'index';
 
                 if(!isset($route['prefix']))
@@ -66,7 +66,7 @@ class Router
                 }
 
                 $route['controller'] = static::upperCamelCase($route['controller']);
-
+                $route['action'] = static::lowerCamelCase($route['action']);
 
                 static::$route = $route;
                 return true;
