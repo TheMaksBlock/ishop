@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 
+use RedBeanPHP\R;
+
 class MainController extends App {
 
     public function __construct($route){
@@ -10,14 +12,9 @@ class MainController extends App {
     }
 
     public function indexAction(){
+        $posts = R::findAll('test');
         $this->setMeta(\ishop\App::$app->getPropertie('shop_name'), 'Описание', 'Ключи');
-
-        $this->set(['name'=>"Maks", 'age'=>19]);
+        $this->set(compact('posts'));
     }
 
-    public function viewAction(){
-        $this->setMeta(\ishop\App::$app->getPropertie('shop_name'), 'Описание', 'Ключи');
-
-        $this->set(['name'=>"Maks", 'age'=>19]);
-    }
 }

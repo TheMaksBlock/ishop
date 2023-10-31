@@ -1,3 +1,4 @@
+<?php use \RedBeanPHP\R as R;?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -12,4 +13,9 @@
 </body>
 
 <?=$content?>
+
+<?php
+$logs = R::getDatabaseAdapter()->getDatabase()->getLogger();
+debug($logs->grep('SELECT'));
+?>
 </html>
