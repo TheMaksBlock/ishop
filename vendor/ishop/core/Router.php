@@ -9,60 +9,52 @@ class Router
     public static $routes = [];
     public static $route = [];
 
-    public static function add($regexp, $route = [])
-    {
+    public static function add($regexp, $route = []) {
         static::$routes[$regexp] = $route;
     }
 
-    public static function getRoutes(): array
-    {
+    public static function getRoutes(): array {
         return static::$routes;
     }
 
-    public static function getRoute(): array
-    {
+    public static function getRoute(): array {
         return static::$route;
     }
 
-    public static function dispatch($url)
-    {
-        if (static::matchRoute($url)){
-            $controller = 'app\controllers\\'.static::$route['prefix'].static::$route['controller'].'Controller';
+    public static function dispatch($url) {
+        $url = static::removeQueryString($url);
 
-            if (class_exists($controller)){
+        if (static::matchRoute($url)) {
+            $controller = 'app\controllers\\' . static::$route['prefix'] . static::$route['controller'] . 'Controller';
+            if (class_exists($controller)) {
                 $controllerObject = new $controller(static::$route);
-                $action = static::$route['action'].'Action';
+                $action = static::$route['action'] . 'Action';
 
-                if(method_exists($controllerObject, $action)){
+                if (method_exists($controllerObject, $action)) {
                     $controllerObject->$action();
                     $controllerObject->getView();
-                }
-                else throw new Exception("Метод {$controller}::{$action} не найдена", 404);
+                } else throw new Exception("Метод {$controller}::{$action} не найдена", 404);
 
-            }
-            else{
+            } else {
                 throw new Exception("Контролеер {$controller} не найдена", 404);
             }
-        }
-        else
+        } else
             throw new Exception("Страница не найдена", 404);
     }
 
-    public static function matchRoute($url): bool
-    {
+    public static function matchRoute($url): bool {
         foreach (static::$routes as $pattern => $route) {
-            if(preg_match("#{$pattern}#", $url, $matches)){
+            if (preg_match("#{$pattern}#", $url, $matches)) {
                 foreach ($matches as $k => $v) {
-                    if(is_string($k))
+                    if (is_string($k))
                         $route[$k] = $v;
                 }
-
-                if(!isset($route['action']))
+                if (!isset($route['action']))
                     $route['action'] = 'index';
 
-                if(!isset($route['prefix']))
+                if (!isset($route['prefix']))
                     $route['prefix'] = '';
-                else{
+                else {
                     $route['prefix'] .= '\\';
                 }
 
@@ -77,12 +69,25 @@ class Router
     }
 
 
-    protected static function upperCamelCase($name){
-        return str_replace(' ','',ucwords(str_replace('-', ' ', $name)));
+    protected static function upperCamelCase($name) {
+        return str_replace(' ', '', ucwords(str_replace('-', ' ', $name)));
     }
 
-    protected static function lowerCamelCase($name){
+    protected static function lowerCamelCase($name) {
         return lcfirst(static::upperCamelCase($name));
+    }
+
+    protected static function removeQueryString($url) {
+        if($url)
+        {
+
+            $params = explode('&', $url,2);
+            if(strpos($params[0], '=') === false){
+                return rtrim($params[0],'/');
+            }
+            else return '';
+        }
+        return $url;
     }
 
 }
