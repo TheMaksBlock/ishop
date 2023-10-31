@@ -20,8 +20,7 @@ class Registry
         return null;
     }
 
-    public  function getProperties()
-    {
+    public  function getProperties(): array {
         return static::$properties;
     }
 }
