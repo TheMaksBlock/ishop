@@ -13,7 +13,7 @@ class Registry
     }
 
 
-    public function getPropertie($name)
+    public function getProperty($name)
     {
         if(isset(static::$properties[$name]))
             return static::$properties[$name];

@@ -1,7 +1,7 @@
 <?php
 
     return [
-      'admin_email' => 'admin@example.com',
+        'admin_email' => 'admin@example.com',
         'shop_name' => 'Магазин ishop.loc',
         'pagination' => 3,
         'smtp_login' => '',
