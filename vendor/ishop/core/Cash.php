@@ -24,7 +24,7 @@ class Cash
 
             $content = unserialize(file_get_contents($file));
             if (time() <= $content['end_time']) {
-                return $content;
+                return $content['data'];
             } else {
                 unlink($file);
             }
