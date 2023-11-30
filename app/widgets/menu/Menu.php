@@ -45,7 +45,6 @@ class Menu
             {
                 $this->data = R::getAssoc("SELECT * FROM {$this->table}");
             }
-            debug($this->data);
             $this->tree = $this->getTree();
             $this->menuHtml = $this->getMenuHtml($this->tree);
             if($this->cash){
@@ -64,7 +63,11 @@ class Menu
                $attrs.= " $key=$v";
            }
         }
-        echo "<{$this->container} class='{$this->class}' $attrs>";
+        echo "<{$this->container} class='{$this->class}' $attrs>";?>
+        <li>
+            <a href=<?=PATH?>>Home</a>
+        </li>
+        <?php
         echo  $this->prepend;
         echo $this->menuHtml;
         echo "</{$this->container}>";

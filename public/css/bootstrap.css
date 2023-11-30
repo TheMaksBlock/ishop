@@ -6368,6 +6368,11 @@ button.close {
 .hidden {
   display: none !important;
 }
+
+.input-lg {
+  margin-top: 10px;
+}
+
 .affix {
   position: fixed;
 }
