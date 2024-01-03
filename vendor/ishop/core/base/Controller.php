@@ -2,6 +2,8 @@
 
 namespace ishop\base;
 
+use ishop\App;
+
 abstract class Controller
 {
     public $route;
@@ -22,21 +24,28 @@ abstract class Controller
         $this->prefix = $route['prefix'];
     }
 
-    public function getView(){
+    public function getView(): void {
         $viewObject = new View($this->route,$this->layout, $this->view ,$this->meta);
         $viewObject->render($this->data);
     }
 
-    public function set($data)
-    {
+    public function set($data): void {
         $this->data = $data;
     }
 
-    public function setMeta($title = '', $desc = '', $keywords = '')
-    {
+    public function setMeta($title = '', $desc = '', $keywords = ''): void {
         $this->meta['title'] = $title;
         $this->meta['desc'] = $desc;
         $this->meta['keywords'] = $keywords;
     }
 
+    public function isAjax(): bool {
+        return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
+    }
+
+    public function loadView($view, $vars = []){
+        extract($vars);
+        require APP."/views/{$this->prefix}{$this->controller}/{$view}.php";
+        die();
+    }
 }

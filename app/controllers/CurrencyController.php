@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Cart;
 use ishop\App;
 use RedBeanPHP\R;
 
@@ -13,6 +14,7 @@ class CurrencyController extends AppController {
             $curr = App::$app->getProperty('currencies');
             if(!empty($curr[$currency])){
                 setcookie('currency', $currency, time() + 3600*24*7, '/');
+                Cart::recalc($curr[$currency]);
             }
         }
         redirect();
