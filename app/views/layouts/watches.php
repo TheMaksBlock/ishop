@@ -90,8 +90,12 @@ use RedBeanPHP\R;
                 </div>
                 <div class="col-md-3 header-right">
                     <div class="search-bar">
-                        <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-                        <input type="submit" value="">
+                        <form action="search" autocomplete="off">
+                            <input type = "text" class="typeahead" id = "typeahead" name ="s" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                            <input type = "submit" value="">
+                        </form>
+                        <!--<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                        <input type="submit" value="">-->
                     </div>
                 </div>
                 <div class="clearfix"> </div>
@@ -197,15 +201,16 @@ use RedBeanPHP\R;
     </script>
     <script src="/public/js/jquery-1.11.0.min.js"></script>
     <script src="/public/js/bootstrap.min.js"></script>
-    <script src="/public/css/bootstrap.css"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
+    <script src="/public/js/typeahead.bundle.js"></script>
     <!--dropdown-->
-    <script src="/js/jquery.easydropdown.js"></script>
+    <script src="/public/js/jquery.easydropdown.js"></script>
     <!--Slider-Starts-Here-->
-    <script src="/js/responsiveslides.min.js"></script>
-    <script defer src="/js/jquery.flexslider.js"></script>
-    <script src="/megamenu/js/megamenu.js"></script>
-    <script src="/js/imagezoom.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="/public/js/responsiveslides.min.js"></script>
+    <script defer src="/public/js/jquery.flexslider.js"></script>
+    <script src="/public/megamenu/js/megamenu.js"></script>
+    <script src="/public/js/imagezoom.js"></script>
+    <script src="/public/js/main.js"></script>
     <script>
         // Can also be used with $(document).ready()
         $(window).load(function() {
