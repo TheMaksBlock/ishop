@@ -64,9 +64,9 @@ class Menu
            }
         }
         echo "<{$this->container} class='{$this->class}' $attrs>";?>
-        <li>
-            <a href=<?=PATH?>>Home</a>
-        </li>
+       <!-- <li>
+            <a href=<?php /*=PATH*/?>>Home</a>
+        </li>-->
         <?php
         echo  $this->prepend;
         echo $this->menuHtml;

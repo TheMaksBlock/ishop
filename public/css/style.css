@@ -880,7 +880,7 @@ a.mask {
 /*--footer-end--*/
 /*--product-page-starts--*/
 .prdt{
-	padding:6em 0px;
+	padding:3em 0px;
 }
 .w_sidebar{
 	border: 1px solid #EBEBEB;
@@ -3168,3 +3168,23 @@ span.twitter-typeahead {
 	top: 46px !important;
 }
 /*search*/
+
+.menu a
+{
+	background-color: white;
+}
+
+.menu-dropdown-icon
+{
+	background-color: white;
+}
+
+.menu
+{
+	background-color: white;
+}
+
+.menu-mobile
+{
+	background-color: white;
+}
