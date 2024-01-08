@@ -195,7 +195,7 @@ span.simpleCart_total {
 /* WRAPPER */
 .dropdown{
 	position: relative;
-	width:75px;
+	width:50px;
 	cursor: pointer;
 	font-weight: 200;
 	background: none;
@@ -1424,8 +1424,8 @@ a.mask {
 .account-bottom {
 	margin-top: 2.2em;
 }
-.account-left input[type="text"],.account-left input[type="password"] {
-	width: 90%;
+.account-left input[type="text"],.account-left input[type="password"], .account-left input[type="email"] {
+	/*width: 90%;*/
 	margin: 0px;
 	color: #000;
 	background: none;
@@ -3188,3 +3188,29 @@ span.twitter-typeahead {
 {
 	background-color: white;
 }
+
+.drop > .btn-group > a{
+	color: #fff;
+	cursor: pointer;
+	position: relative;
+	top: -2px;
+}
+
+form .has-success .form-control{
+	border-color: green;
+}
+
+form .has-error .form-control{
+	border-color: red;
+}
+
+.has-success, .has-error{
+	position: relative;
+}
+
+.form-control-feedback{
+	right: 10px;
+	top: 25px;
+}
+
+

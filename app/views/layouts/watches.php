@@ -8,12 +8,12 @@ use RedBeanPHP\R;
 <head>
     <base href="/">
     <?=$this->getMeta(); ?>
-    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="/megamenu/css/ionicons.min.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="/megamenu/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
+    <link href="/public/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/public/megamenu/css/ionicons.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/public/megamenu/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/public/css/flexslider.css" type="text/css" media="screen" />
     <!--theme-style-->
-    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/public/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -26,18 +26,50 @@ use RedBeanPHP\R;
                 <div class="col-md-6 top-header-left">
                     <div class="drop">
                         <div class="box">
-                            <select id ="currency" tabindex="4" class="dropdown drop">
+                            <select id="currency" tabindex="4" class="dropdown drop">
                                 <?php new \app\widgets\currency\Currency(); ?>
                             </select>
                         </div>
-                        <div class="box1">
-                            <select tabindex="4" class="dropdown">
-                                <option value="" class="label">English :</option>
-                                <option value="1">English</option>
-                                <option value="2">French</option>
-                                <option value="3">German</option>
-                            </select>
+                        <div class="btn-group">
+                            <a class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <?php if(!empty($_SESSION['user'])): ?>
+                                    <li><a href="#">Добро пожаловать, <?=h($_SESSION['user']['name']);?></a></li>
+                                    <li><a href="user/logout">Выход</a></li>
+                                <?php else: ?>
+                                    <li><a href="user/login">Вход</a></li>
+                                    <li><a href="user/signup">Регистрация</a></li>
+                                <?php endif; ?>
+                            </ul>
                         </div>
+                        <!--<div class="box1">
+                            <select tabindex="6" class="dropdown">
+                                <option value="user/logout">Выход</option>
+                                <?php /*if(!empty($_SESSION['user'])): */?>
+                                <option value="" class="label">Добро пожаловать, <?php /*=h($_SESSION['user']['name']);*/?> :</option>
+                                <option value="user/logout">Выход</option>
+                                <?php /*else: */?>
+                                <option value="user/login">Вход</option>
+                                <option value="user/signup">Регистрация</option>
+                                <?php /*endif; */?>
+                            </select>
+                        </div>-->
+
+
+                       <!-- <div class="btn-group">
+                            <a class="dropdown-toggle" >Account <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <?php /*if(!empty($_SESSION['user'])): */?>
+                                    <li><a href="#">Добро пожаловать, <?php /*=h($_SESSION['user']['name']);*/?></a></li>
+                                    <li><a href="user/logout"></a></li>
+                                <?php /*else: */?>
+                                    <li><a href="user/login">Вход</a></li>
+                                    <li><a href="user/signup">Регистрация</a></li>
+                                <?php /*endif; */?>
+                            </ul>
+                        </div>-->
+
+
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -45,7 +77,7 @@ use RedBeanPHP\R;
                     <div class="cart box_1">
                         <a href="cart/show" onclick="getCart(); return false">
                         <div class="total">
-                            <img src="images/cart-1.png" alt="">
+                            <img src="/public/images/cart-1.png" alt="">
                             <?php if(!empty($_SESSION['cart'])): ?>
                                 <span class="simpleCart_total "><?=$_SESSION['cart.currency']['symbol_left'].$_SESSION['cart.sum']
                                     .$_SESSION['cart.currency']['symbol_right'] ?></span>
@@ -55,13 +87,6 @@ use RedBeanPHP\R;
                         </div>
                         </a>
 
-                       <!-- <a href="/checkout.html">
-                            <div class="total">
-                                <span class="simpleCart_total"></span></div>
-                            <img src="/images/cart-1.png" alt="" />
-                        </a>
-                        <p><a href="/javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-                        <div class="clearfix"> </div>-->
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -94,8 +119,6 @@ use RedBeanPHP\R;
                             <input type = "text" class="typeahead" id = "typeahead" name ="s" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
                             <input type = "submit" value="">
                         </form>
-                        <!--<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-                        <input type="submit" value="">-->
                     </div>
                 </div>
                 <div class="clearfix"> </div>
@@ -105,6 +128,22 @@ use RedBeanPHP\R;
     <!--bottom-header-->
 
     <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <?php if(isset($_SESSION['error'])): ?>
+                        <div class="alert alert-danger">
+                            <?php echo $_SESSION['error'];unset($_SESSION['error'])?>
+                        </div>
+                    <?php endif;?>
+                    <?php if(isset($_SESSION['success'])): ?>
+                        <div class="alert alert-success">
+                            <?php echo $_SESSION['success'];unset($_SESSION['success'])?>
+                        </div>
+                    <?php endif;?>
+                </div>
+            </div>
+        </div>
         <?= $content?>
     </div>
 
@@ -203,6 +242,9 @@ use RedBeanPHP\R;
     <script src="/public/js/bootstrap.min.js"></script>
     <script src="/public/js/bootstrap.min.js"></script>
     <script src="/public/js/typeahead.bundle.js"></script>
+    <script src="/public/js/bootstrap.js"></script>
+    <script src="/public/js/validator.js"></script>
+
     <!--dropdown-->
     <script src="/public/js/jquery.easydropdown.js"></script>
     <!--Slider-Starts-Here-->
