@@ -10,7 +10,6 @@ class Cart extends AppModel
 
         $_SESSION['cart.currency'] = App::$app->getProperty('currency');
 
-
         if ($mod) {
             $ID = "{$product->id}-{$mod->id}";
             $title = "{$product->title} ({$mod->title})";

@@ -42,32 +42,7 @@ use RedBeanPHP\R;
                                 <?php endif; ?>
                             </ul>
                         </div>
-                        <!--<div class="box1">
-                            <select tabindex="6" class="dropdown">
-                                <option value="user/logout">Выход</option>
-                                <?php /*if(!empty($_SESSION['user'])): */?>
-                                <option value="" class="label">Добро пожаловать, <?php /*=h($_SESSION['user']['name']);*/?> :</option>
-                                <option value="user/logout">Выход</option>
-                                <?php /*else: */?>
-                                <option value="user/login">Вход</option>
-                                <option value="user/signup">Регистрация</option>
-                                <?php /*endif; */?>
-                            </select>
-                        </div>-->
 
-
-                       <!-- <div class="btn-group">
-                            <a class="dropdown-toggle" >Account <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <?php /*if(!empty($_SESSION['user'])): */?>
-                                    <li><a href="#">Добро пожаловать, <?php /*=h($_SESSION['user']['name']);*/?></a></li>
-                                    <li><a href="user/logout"></a></li>
-                                <?php /*else: */?>
-                                    <li><a href="user/login">Вход</a></li>
-                                    <li><a href="user/signup">Регистрация</a></li>
-                                <?php /*endif; */?>
-                            </ul>
-                        </div>-->
 
 
                         <div class="clearfix"></div>
