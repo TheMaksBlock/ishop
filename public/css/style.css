@@ -47,6 +47,9 @@ body a{
 .top-header {
 	background: #000;
 	padding: 10px 0px;
+	position: absolute;
+	z-index:2;
+	width: 100%;
 }
 .search-bar input[type="text"] {
 	width: 100%;
@@ -1040,7 +1043,6 @@ a.mask {
 	line-height: 27px;
 	color: #555555;
 	cursor: pointer;
-	text-transform: capitalize;
 	font-weight: normal;
 	margin-top: 0;
 }
@@ -3211,6 +3213,24 @@ form .has-error .form-control{
 .form-control-feedback{
 	right: 10px;
 	top: 25px;
+}
+
+.preload{
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:1;
+	background-color:#fefefe;
+	opacity: .7;
+	display: none;
+}
+.preload img{
+	position:relative;
+	left:50%;
+	top:50vh;
+	margin:-100px 0 0 -100px;
 }
 
 

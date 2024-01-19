@@ -7,6 +7,7 @@ use RedBeanPHP\R;
 <html>
 <head>
     <base href="/">
+    <link rel="shortcut icon" href="/public/images/star.png" type="image/png">
     <?=$this->getMeta(); ?>
     <link href="/public/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="/public/megamenu/css/ionicons.min.css" rel="stylesheet" type="text/css" media="all" />
@@ -205,6 +206,7 @@ use RedBeanPHP\R;
         </div>
     </div>
 
+    <div class="preload"><img src="/public/images/ring.svg" alt=""></div>
     <!--footer-end-->
     <?php $curr = App::$app->getProperty('currency')?>
     <script>

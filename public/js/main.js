@@ -123,3 +123,44 @@ $('.available select').on('change', function(){
         $("#base-price").text(symbolLeft + basePrice + symbolRight);
     }
 });
+
+/*filters*/
+$('body').on('change', '.w_sidebar input', function(){
+    var checked = $('.w_sidebar input:checked'),
+        data = '';
+
+    checked.each(function () {
+        data += this.value + ',';
+    });
+
+    if(data){
+        $.ajax({
+            url: location.href,
+            data: {filter: data},
+            type: 'GET',
+            beforeSend: function(){
+                $('.preload').fadeIn(300,function(){
+                    $('.product-one').hide();
+                });
+            },
+            success: function(res){
+                $('.preload').fadeOut('slow',function(){
+                    $('.product-one').html(res).fadeIn(300);
+                    var url = location.search.replace(/filter(.+?)(&|$)/g, ''); //$2
+                    var newURL = location.pathname + url + (location.search ? "&" : "?") + "filter=" + data;
+                    newURL = newURL.replace('&&', '&');
+                    newURL = newURL.replace('?&', '?');
+                    newURL = newURL.slice(0, -1);
+                    history.pushState({}, '', newURL);
+                });
+            },
+            error: function(){
+                alert("Error");
+            }
+
+        })
+    } else{
+        window.location = location.pathname;
+    }
+});
+/*filters*/
