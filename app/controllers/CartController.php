@@ -59,9 +59,7 @@ class CartController extends AppController
 
     public function clearAction()
     {
-        unset($_SESSION['cart']);
-        unset($_SESSION['cart.qty']);
-        unset($_SESSION['cart.sum']);
+        Cart::clear();
 
         $this->loadView('cart_model');
     }
@@ -106,6 +104,7 @@ class CartController extends AppController
         $order_id = Order::saveOrder($data);
         Order::saveOrderProduct($order_id);
         Order::mailOrder($order_id,$user_email);
+        Cart::clear();
         redirect();
     }
 

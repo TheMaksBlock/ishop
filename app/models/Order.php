@@ -12,7 +12,7 @@ class Order extends AppModel
     {
         $order = R::dispense('order');
         $order->user_id = $data['user_id'];
-        $order->note = $data['note'];
+            $order->note = $data['note'];
         $order->currency = $_SESSION['cart.currency']['code'];
         $order_id = R::store($order);
         self::saveOrderProduct($order_id);
