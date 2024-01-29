@@ -102,7 +102,6 @@ class CartController extends AppController
         $data['note'] = !empty($_POST['note']) ? h($_POST['note']) : '';
         $user_email = $_SESSION['user']['email'] ?? $_POST['email'];
         $order_id = Order::saveOrder($data);
-        Order::saveOrderProduct($order_id);
         Order::mailOrder($order_id,$user_email);
         Cart::clear();
         redirect();
