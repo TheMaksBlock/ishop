@@ -28,3 +28,16 @@ $('body').on('change', '.get-confirmed-orders input', function(){
     })
     $('.preload').fadeOut(300);
 });
+
+
+
+$('.sidebar-menu a').each(function(){
+    var loc = window.location.protocol + '//' + window.location.host+window.location.pathname;
+    console.log(loc);
+    var link = this.href;
+
+    if(link==location){
+        $(this).parent().addClass('active');
+        $(this).closest('.treeview').addClass('active');
+    }
+});
