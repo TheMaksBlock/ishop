@@ -5,6 +5,7 @@ namespace app\controllers\admin;
 use app\controllers\admin\AppController;
 use app\models\AppModel;
 use app\models\Category;
+use ishop\App;
 use RedBeanPHP\R;
 
 class CategoryController extends AppController
@@ -69,10 +70,34 @@ class CategoryController extends AppController
     }
 
     public function editAction(){
+        if(!empty($_POST)){
+            $id = $this->getID(false);
+
+            $categrory = new Category();
+            $data = $_POST;
+
+            $categrory->load($data);
+            if(!$categrory->validate($data)){
+                $categrory->getErrors();
+                redirect();
+            }
+
+            if($categrory->update("category", $id)){
+                $alias = AppModel::createAlias('category', 'alias', $data['title'], $id);
+                $cat = R::load('category', $id);
+                $cat->alias = $alias;
+                R::store($cat);
+                $_SESSION['success'] = 'Категория отредактирована';
+            }
+
+            redirect();
+        }
+
+
         $id = $this->getID();
         $category = R::load('category', $id);
         $this->setMeta("Редактирование категории {$category->title}");
-
+        App::$app->setProperty("parent_id", $category->parent_id );
         $this->set(compact('category'));
     }
 }
