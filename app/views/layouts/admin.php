@@ -602,6 +602,7 @@
 <script src="dist/js/adminlte.min.js"></script>
 <script src="my.js"></script>
 <script src="bower_components/ckeditor/ckeditor.js"></script>
+<script src="/public/js/validator.js"></script>
 </body>
 <?php
 use RedBeanPHP\R;
