@@ -25,8 +25,8 @@ use app\widgets\menu\Menu;
                        <?php new Menu([
                                'tpl' => WWW."/menu/category_admin.php",
                            'container' => 'div',
-                           'cash' => 0,
-                           'cashkey' => 'admin_cat',
+                           /*'cache' => 0,*/
+                           'cachekey' => 'admin_cat',
                            'class' => 'list-group list-group-root well'
                        ]); ?>
                     </div>

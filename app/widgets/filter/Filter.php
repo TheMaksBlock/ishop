@@ -2,7 +2,7 @@
 
 namespace app\widgets\filter;
 
-use ishop\Cash;
+use ishop\Cache;
 use RedBeanPHP\R;
 
 class Filter
@@ -17,19 +17,19 @@ class Filter
     }
 
     protected function run() {
-        $cash = Cash::instance();
+        $cache = Cache::instance();
 
-        $this->groups = $cash->get('filter_groups');
+        $this->groups = $cache->get('filter_groups');
         if(!$this->groups){
             $this->groups = $this->getGroups();
-            $cash->set('filter_groups', $this->groups);
+            $cache->set('filter_groups', $this->groups);
         }
 
-        $this->attrs = $cash->get('filter_attrs');
+        $this->attrs = $cache->get('filter_attrs');
         if(!$this->attrs)
         {
             $this->attrs = self::getAttrs();
-            $cash->set('filter_attrs', $this->attrs, 1);
+            $cache->set('filter_attrs', $this->attrs, 1);
         }
 
         echo $this->getHTML();
@@ -71,8 +71,8 @@ class Filter
 
     public static function getCountGroups($filter){
         $filters = explode(',', $filter);
-        $cash = Cash::instance();
-        $attrs = $cash->get('filter_attrs');
+        $cache = Cache::instance();
+        $attrs = $cache->get('filter_attrs');
 
         if(!$attrs){
             $attrs = self::getAttrs();

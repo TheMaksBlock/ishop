@@ -2,7 +2,7 @@
 
 namespace ishop;
 
-class Cash
+class Cache
 {
     use TSingletone;
 

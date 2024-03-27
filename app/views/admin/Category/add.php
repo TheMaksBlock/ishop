@@ -27,8 +27,7 @@
                             <?php new \app\widgets\menu\Menu([
                                 'tpl' => WWW . '/menu/select.php',
                                 'container' => 'select',
-                                'cash' => 0,
-                                'cashkey' => 'admin_select',
+                                'cachekey' => 'admin_select',
                                 'class' => 'form-control',
                                 'attrs' => [
                                     'name' => 'parent_id',

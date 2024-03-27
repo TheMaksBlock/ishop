@@ -2148,3 +2148,12 @@
 [2024-03-20 21:32:49]
          Текст ошибки Страница не найдена | Файл D:\Programs\xampp\htdocs\ishop.loc\vendor\ishop\core\Router.php | Строка 42
 =========
+[2024-03-27 20:17:04]
+         Текст ошибки Контролеер app\controllers\admin\CacheController не найдена | Файл D:\Programs\xampp\htdocs\ishop.loc\vendor\ishop\core\Router.php | Строка 39
+=========
+[2024-03-27 20:17:05]
+         Текст ошибки Страница не найдена | Файл D:\Programs\xampp\htdocs\ishop.loc\vendor\ishop\core\Router.php | Строка 42
+=========
+[2024-03-27 20:25:58]
+         Текст ошибки Не найден вид D:\Programs\xampp\htdocs\ishop.loc/app/views/admin\Cache/index.php | Файл D:\Programs\xampp\htdocs\ishop.loc\vendor\ishop\core\base\View.php | Строка 43
+=========

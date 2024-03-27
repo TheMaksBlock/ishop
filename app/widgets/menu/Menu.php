@@ -3,7 +3,7 @@
 namespace app\widgets\menu;
 
 use ishop\App;
-use ishop\Cash;
+use ishop\Cache;
 use RedBeanPHP\R;
 
 class Menu
@@ -15,8 +15,8 @@ class Menu
     protected $container = 'ul';
     protected $class = 'menu';
     protected $table = 'category';
-    protected $cash = 3600;
-    protected $cashkey = 'ishop_menu';
+    protected $cache = 3600;
+    protected $cachekey = 'ishop_menu';
     protected $attrs = [];
     protected $prepend = '';
 
@@ -36,8 +36,8 @@ class Menu
     }
 
     public function run(){
-        $cash = Cash::instance();
-        $this->menuHtml = $cash->get($this->cashkey);
+        $cache = Cache::instance();
+        $this->menuHtml = $cache->get($this->cachekey);
         if(!$this->menuHtml)
         {
             $this->data = App::$app->getProperty('cats');
@@ -47,8 +47,8 @@ class Menu
             }
             $this->tree = $this->getTree();
             $this->menuHtml = $this->getMenuHtml($this->tree);
-            if($this->cash){
-                $cash->set($this->cashkey, $this->menuHtml, $this->cash);
+            if($this->cache){
+                $cache->set($this->cachekey, $this->menuHtml, $this->cache);
             }
         }
 
